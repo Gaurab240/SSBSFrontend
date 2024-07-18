@@ -1,21 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./ind.css"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="./ind.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>This is title section.</title>
-</head>
-<body>
-   
-   
-    <body>
-        <div class="mainDiv">
-            <p>  This is the body. This is updated one.</p>
-          <!--This is comment-->
+  </head>
+  <body>
+    <div id="header">
+      <!--This is comment-->
+      <div class="container">
+        <nav>
+          <img src="G (1).png" class="logo" />
+          <ul>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#">Services</a>
+            </li>
+            <li>
+              <a href="#">Portfolio</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="heroText">
+          <p>Frontend Developer</p>
+          <h1>Hi, this is <span>Gaurab</span><br />Ghimire from Itahari</h1>
         </div>
-       
-    </body>
-   
-</body>
+      </div>
+    </div>
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="colOne">
+            <img src="download.png" />
+          </div>
+          <div class="col2">
+            <h1 class="subTitle">About Me</h1>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Temporibus eius ex beatae quibusdam, repellendus fuga culpa
+              voluptatibus, delectus tenetur maxime numquam perspiciatis
+              repudiandae. Esse et nulla aut illo atque. Id!
+            </p>
+            <div class="tabTitles">
+              <p class="tabLinks activeLink" onclick="opentab('skills')">
+                Skills
+              </p>
+              <p class="tabLinks" onclick="opentab('experience')">Experience</p>
+              <p class="tabLinks" onclick="opentab('education')">Education</p>
+            </div>
+            <div class="tabContents activeTab" id="skills">
+              <ul>
+                <li><span>UI?UX</span><br />Designing web app</li>
+                <li><span>Web Development</span><br />Developing web app</li>
+                <li><span>App Development</span><br />Developing mobile app</li>
+              </ul>
+            </div>
+            <div class="tabContents" id="experience">
+              <ul>
+                <li>
+                  <span>2019-2020</span><br />Junior Frontend Developer, Simsim
+                  Inst
+                </li>
+                <li>
+                  <span>2020-2022</span><br />Mid level Frontend Developer,
+                  Ashakiran Inc
+                </li>
+                <li>
+                  <span>2022-current</span><br />Mid level Frontend Developer,
+                  Mero Tech Inc
+                </li>
+              </ul>
+            </div>
+            <div class="tabContents" id="education">
+              <ul>
+                <li><span>2015</span><br />SLC, Pashupati Sec. School</li>
+                <li><span>2017</span><br />+2, Koshi St. James</li>
+                <li><span>2021</span><br />BE, HCOE</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services starts -->
+    <div id="services"></div>
+
+    <script>
+      var tablinks = document.getElementsByClassName("tabLinks");
+      var tabcontents = document.getElementsByClassName("tabContents");
+      function opentab(tabname) {
+        for (tablink of tablinks) {
+          tablink.classList.remove("activeLink");
+        }
+        for (tabcontent of tabcontents) {
+          tabcontent.classList.remove("activeTab");
+        }
+        event.currentTarget.classList.add("activeLink");
+        document.getElementById(tabname).classList.add("activeTab");
+      }
+    </script>
+  </body>
 </html>
