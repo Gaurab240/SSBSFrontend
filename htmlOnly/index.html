@@ -19,23 +19,25 @@
       <div class="container">
         <nav>
           <img src="G (1).png" class="logo" />
-          <ul>
+          <ul id="sideMenu">
             <li>
-              <a href="#">Home</a>
+              <a href="#header">Home</a>
             </li>
             <li>
-              <a href="#">About</a>
+              <a href="#about">About</a>
             </li>
             <li>
-              <a href="#">Services</a>
+              <a href="#services">Services</a>
             </li>
             <li>
-              <a href="#">Portfolio</a>
+              <a href="#portfolio">Portfolio</a>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <a href="#contact">Contact</a>
             </li>
+            <i class="fa-solid fa-xmark" onclick="closeMenu()"></i>
           </ul>
+          <i class="fa-solid fa-bars" onclick="openMenu()"></i>
         </nav>
         <div class="heroText">
           <p>Frontend Developer</p>
@@ -194,38 +196,57 @@
         <a href="#" class="btn">See more</a>
       </div>
     </div>
-<div id="contact">
-  <div class="container">
-    <div class="row">
-      <div class="contactLeft">
-        <h1 class="subTitle">
-          Contact Me
-        </h1>
-        <p><i class="fa-solid fa-paper-plane"></i> gaurabghimire344@gmail.com</p>
-        <p><i class="fa-solid fa-phone"></i> 982342342</p>
-        <div class="socialIcons">
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-viber"></i></a>
-          
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="contactLeft">
+            <h1 class="subTitle">
+              Contact Me
+            </h1>
+            <p>
+              <i class="fa-solid fa-paper-plane"></i> gaurabghimire344@gmail.com
+            </p>
+            <p><i class="fa-solid fa-phone"></i> 982342342</p>
+            <div class="socialIcons">
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-viber"></i></a>
+            </div>
+            <a href="download.png" download class="btn btn2">Download CV</a>
+          </div>
+          <div class="contactRight">
+            <form name="submit-to-google-sheet">
+              <input
+                type="text"
+                name="Name"
+                placeholder="Enter your name"
+                required
+              />
+              <input
+                type="email"
+                name="Email"
+                placeholder="Enter your email"
+                required
+              />
+              <textarea
+                name="Message"
+                rows="6"
+                placeholder="Enter your message"
+              ></textarea>
+              <button type="submit" class="btn btn2">Submit</button>
+            </form>
+            <div id="msg"></div>
+          </div>
         </div>
-        <a href="download.png" download class="btn btn2">Download CV</a>
       </div>
-      <div class="contactRight">
-        <form>
-          <input type="text" name="Name" placeholder="Enter your name" required/>
-          <input type="email" name="Email" placeholder="Enter your email" required/>
-          <textarea name="Message" rows="6" placeholder="Enter your message"></textarea>
-          <button type="submit" class="btn btn2">Submit</button>
-        </form>
+      <div class="copyright">
+        <p>
+          Copyright © Gaurab. Made by <i class="fa-solid fa-heart"></i> Gg pro,
+          Itahari
+        </p>
       </div>
     </div>
-  </div>
-  <div class="copyright">
-    <p>Copyright © Gaurab. Made by <i class="fa-solid fa-heart"></i> Gg pro, Itahari</p>
-  </div>
-</div>
     <script>
       var tablinks = document.getElementsByClassName("tabLinks");
       var tabcontents = document.getElementsByClassName("tabContents");
@@ -239,6 +260,36 @@
         event.currentTarget.classList.add("activeLink");
         document.getElementById(tabname).classList.add("activeTab");
       }
+    </script>
+    <script>
+      var sidemen = document.getElementById("sideMenu");
+      function openMenu() {
+        sidemen.style.right = "0";
+      }
+
+      function closeMenu() {
+        sidemen.style.right = "-200px";
+      }
+    </script>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbwzbjxr4Z9vyIzs7rYBsqaNDUSOebOF1Va3fN1-8QxS637hqVai6-4SEDIiG9ka5Xbi/exec";
+      const form = document.forms["submit-to-google-sheet"];
+      const msg = document.getElementById("msg");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          //   .then((response) => console.log("Success!", response))
+          .then((response) => {
+            msg.innerHTML = "Message sent successfully";
+            setTimeout(function () {
+              msg.innerHTML = ""
+            }, 5000);
+            form.reset();
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
     </script>
   </body>
 </html>
